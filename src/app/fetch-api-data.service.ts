@@ -144,7 +144,7 @@ export class GetDirectorService {
   public getDirector(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + '/movies/directors/:Name', {
+      .get(apiUrl + 'movies/directors/:Name', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -180,7 +180,7 @@ export class GetGenreService {
   public getGenre(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + '/movies/genres/:Genre', {
+      .get(apiUrl + 'movies/genres/:Genre', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -216,7 +216,7 @@ export class GetUserService {
   public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + '/users/:Username', {
+      .get(apiUrl + 'users/:Username', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -253,7 +253,7 @@ export class AddToFavService {
   public addToFav(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + '/users/:Username/Movies/:MovieID', {
+      .post(apiUrl + 'users/:Username/Movies/:MovieID', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -289,7 +289,7 @@ export class EditUserService {
   public editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + '/users/:Username', userDetails, {
+      .put(apiUrl + 'users/:Username', userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -325,7 +325,7 @@ export class DeleteUserService {
   public deleteUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .delete(apiUrl + '/users/:Username', {
+      .delete(apiUrl + 'users/:Username', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
