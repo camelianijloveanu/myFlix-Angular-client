@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserRegistrationService } from './fetch-api-data.service';
+import { FetchApiDataService } from './fetch-api-data.service';
 
 describe('FetchApiDataService', () => {
-  let service: UserRegistrationService;
+  let service: FetchApiDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

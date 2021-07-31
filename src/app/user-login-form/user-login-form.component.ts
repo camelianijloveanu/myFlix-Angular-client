@@ -1,51 +1,51 @@
-// src/app/user-registration-form/user-registration-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
-
-// You'll use this import to close the dialog on success
-import { MatDialogRef } from '@angular/material/dialog';
-
-// This import brings in the API calls we created in 6.2
-import { FetchApiDataService } from '../fetch-api-data.service';
-
-// This import is used to display notifications back to the user
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { Router } from '@angular/router';
-
+import { FetchApiDataService } from '../fetch-api-data.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
-
-  @Input() loginData = { Username: '', Password: '' };
-
+  isLoading = false;
+  @Input() loginData ={ Username: '', Password: ''};
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
     public router: Router
   ) { }
+  ngOnInit(): void { 
 
-  ngOnInit(): void {
   }
+  
+  
+  loginUser(): void {
+    this.isLoading = true;
 
-  loginUser(): void{
     this.fetchApiData.userLogin(this.loginData).subscribe((result) => {
 
-      this.dialogRef.close() // This will close the modal on success
-      localStorage.setItem("userName" ,result.userObj.userName) // Saving to local storage
-      localStorage.setItem("password" ,result.userObj.password)
-      localStorage.setItem("token" ,result.token)
-      this.snackBar.open(result, "OK", {
+    console.log(result)
+      this.isLoading = true;
+      this.dialogRef.close();
+      localStorage.setItem("Username" ,result.userObj.Username);
+      localStorage.setItem("Password" ,result.userObj.Password);
+      localStorage.setItem("favoriteMovies" ,result.userObj.favoriteMovies);
+      localStorage.setItem("token" ,result.token);
+
+    console.log(localStorage.getItem("Username"))
+      this.snackBar.open("Login successful!", "OK", {
         duration: 2000,
       });
       this.router.navigate(['movies']);
     }, (result) => {
+      this.isLoading = true;
+      console.log(Response);
       this.snackBar.open(result, "OK", {
         duration: 2000,
       });
     });
-  };
-};
+  }
+}
