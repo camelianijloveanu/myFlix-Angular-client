@@ -1,0 +1,36 @@
+
+.director-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+
+#button {
+  align-self: flex-end;
+  color: white;
+  background-color: #ecb7bf;
+}
+
+.director-container h1 {
+  color: black;
+  align-self: center;
+}
+
+.director-container p {
+  color: black;
+}
+
+.birth-death {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+
+.info {
+  font-size: 14px;
+}
