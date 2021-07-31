@@ -1,0 +1,39 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: #fcdef0;
+}
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 12px;
+}
+  
+  .nav-links{
+    line-height: 30px;
+    width: 190px;
+  }
+  
+  .nav-links-right {
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+  }
+  
+  .nav-title {
+    font-size: 22px;
+    margin: 10px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: #b44772;
+  }
+  
+  
+  .profile, .logout {
+    text-decoration: none;
+    color: #b44772;
+    font-size: 16px;
+  } 
