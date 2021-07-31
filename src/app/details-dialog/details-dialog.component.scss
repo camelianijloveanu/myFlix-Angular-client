@@ -1,0 +1,29 @@
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+
+#button {
+  align-self: flex-end;
+  color: white;
+  background-color: #ecb7bf;
+}
+
+.details-container h1 {
+  color: black;
+  align-self: center;
+  margin-top: 7px;
+}
+
+.details-container p {
+  color: black;
+  align-self: center;
+}
+
+.info{
+  font-size: 14px;
+}
