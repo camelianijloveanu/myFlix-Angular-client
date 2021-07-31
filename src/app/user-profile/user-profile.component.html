@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<div class="profile-container">
+<!-- Update profile -->
+<section>
+  <mat-card class="update-container">
+    <mat-card-header class="update-header">
+      <mat-card-title class="title">Update Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions class="update-form">
+      <button
+        aria-label="button that submits form to update user account"
+        class="btn"
+        mat-raised-button
+        (click)="editUser()"
+      >
+        Update
+      </button>
+      <button
+        aria-label="button that removes user account"
+        class="btn"
+        mat-raised-button
+        (click)="deleteUser()"
+      >
+        Remove Account
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>
+<!-- Fav movies -->
+  <section>
+    <h2>Favorite Movies:</h2>
+    <div class="favMovies-container">
+      <mat-card class="favMovie-card-container" *ngFor='let favorite of favMovies'>
+        <mat-card-header class="favMovie-card-header">
+          <mat-card-title class="favMovie-card-title">{{favorite.Title}}</mat-card-title>
+          <mat-card-subtitle>Directed by: {{favorite.Director.Name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img src={{favorite.ImagePath}} alt={{favorite.Title}} />
+        <mat-card-actions class="favMovie-card-actions-container">
+          <button
+            mat-button
+            color='basic'
+            (click)='removeFavorites(favorite._id, favorite.Title)'            
+          >
+            Remove
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>    
+  </section>  
+</div>
