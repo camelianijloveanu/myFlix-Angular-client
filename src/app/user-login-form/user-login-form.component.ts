@@ -32,7 +32,7 @@ export class UserLoginFormComponent implements OnInit {
       this.dialogRef.close();
       localStorage.setItem("Username" ,result.userObj.Username);
       localStorage.setItem("Password" ,result.userObj.Password);
-      localStorage.setItem("favoriteMovies" ,result.userObj.favoriteMovies);
+      localStorage.setItem("FavoriteMovies" ,result.userObj.FavoriteMovies);
       localStorage.setItem("token" ,result.token);
 
     console.log(localStorage.getItem("Username"))

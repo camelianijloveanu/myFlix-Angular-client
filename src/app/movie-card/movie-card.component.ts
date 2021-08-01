@@ -17,7 +17,6 @@ import { identifierModuleUrl } from '@angular/compiler';
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  favoriteMovieIds: any[] = [];
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -26,7 +25,6 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getMovies();
-    this.getFavoriteMovies();
   }
 
   getMovies(): void {
@@ -34,14 +32,6 @@ export class MovieCardComponent {
       this.movies = resp;
       console.log(this.movies);
       return this.movies;
-    });
-  }
-
-  getFavoriteMovies(): void {
-    const user = localStorage.getItem('user');
-    this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.favoriteMovieIds = resp.FavoriteMovies;
-      return this.favoriteMovieIds;
     });
   }
 
@@ -74,11 +64,12 @@ export class MovieCardComponent {
     });
   }
 
-
-  addFavorite(id: string): void {
-    this.fetchApiData.addToFav(id).subscribe(() => {
-    console.log(localStorage.getItem("FavoriteMovies"))
-      this.snackBar.open(`${id} has been added to your favorite movies list`, 'OK', {
+  addFavorite(id: string, title: string): void {
+    this.fetchApiData.addToFav(id).subscribe((resp: any) => {
+      console.log(resp);
+      let favMovies = resp.FavoriteMovies;
+      localStorage.setItem('FavoriteMovies', favMovies);
+      this.snackBar.open(`${title} has been added to your favorite movies list`, 'OK', {
         duration: 2000,
       });
     });

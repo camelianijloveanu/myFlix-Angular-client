@@ -27,29 +27,40 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.getMovies();
   }
   getUser(): void {
-    const user = localStorage.getItem('user');
-    this.fetchApiData.getUser(user).subscribe((res: any) => {
-      this.user = res;
-      this.getMovies();
-    });
+    let FavoriteMovies = localStorage.getItem('FavoriteMovies');
+    let Username = localStorage.getItem('user');
+    let Email = localStorage.getItem('Email');
+    let Birthday = localStorage.getItem('Birthday');
+    this.user = {
+      "FavoriteMovies": FavoriteMovies,
+      "Username": Username,
+      "Email": Email,
+      "Birthday": Birthday,
+    }
+    this.getMovies();
   }
 
   getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((res: any) => {
-      this.movies = res;
+    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+      this.movies = resp;
       this.filterFavorites();
     });
   }
 
 
   filterFavorites(): void {
-    this.favMovies = this.movies.filter((movie: any) =>
-      this.user.FavouriteMovies.includes(movie._id)
-    );
-    return this.favMovies;
+    this.movies.forEach((movie: any) => {
+      if (this.user.FavoriteMovies.includes(movie._id)) {
+        this.favMovies.push(movie);
+      }
+    });
+    return this.user.FavoriteMovies;
   }
+
+  
 
 
   removeFavorites(id: string, title: string): void {
