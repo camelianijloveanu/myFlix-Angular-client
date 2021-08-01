@@ -8,11 +8,24 @@ h2 {
     margin: 24px auto;
     width: 100%;
     background: #fcdef0;
-  }
+  }  
+  
   .favMovies-container {
+    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    gap: 16px;
+  }
+
+  .favMovie-card-container {
     margin: 24px auto;
-    width: 100%;
+    width: 80%;
     background: #fcdef0;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fcdef0;
   }
   
   .update-form,
@@ -27,6 +40,13 @@ h2 {
     color: white;
     flex-direction: column;
     display: flex;
+}
+.btn-remove {
+  background-color: #b44772;
+  color: white;
+}
+.favMovie-card-actions-container {
+  text-align: center;
 }
 
 .title {

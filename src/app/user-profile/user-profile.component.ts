@@ -27,7 +27,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.getMovies();
+   
   }
   getUser(): void {
     let FavoriteMovies = localStorage.getItem('FavoriteMovies');
@@ -60,11 +60,8 @@ export class UserProfileComponent implements OnInit {
     return this.user.FavoriteMovies;
   }
 
-  
-
-
   removeFavorites(id: string, title: string): void {
-    this.fetchApiData.deleteFromFav(id).subscribe((resp) => {
+    this.fetchApiData.deleteFromFav(id).subscribe((resp: any) => {
       let favMovies = resp.FavoriteMovies;
       localStorage.setItem('FavoriteMovies', favMovies);
       this.snackBar.open(`${title} has been removed from your favorites!`, 'OK', {

@@ -106,7 +106,7 @@ export class FetchApiDataService {
 
 // 9. Add a movie to favourite Movies
 
-  public addToFav(MovieID: string,): Observable<any> {
+  public addToFav(MovieID: string): Observable<any> {
       const token = localStorage.getItem('token');
       const Username = localStorage.getItem('Username');
       return this.http.post(apiUrl + `users/${Username}/Movies/${MovieID}`, MovieID, {
@@ -155,13 +155,14 @@ export class FetchApiDataService {
 
   // 12. Delete movie from favorites N/A 
 
-  public deleteFromFav(userDetails: any): Observable<any> {
+  public deleteFromFav(id: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const Username = localStorage.getItem('Username');
     return this.http
-      .delete(apiUrl + 'users/:Username', {
+      .delete(`${apiUrl}users/${Username}/favorites/${id}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
-        })
+        }),
       })
       .pipe(catchError(this.handleError));
   }
