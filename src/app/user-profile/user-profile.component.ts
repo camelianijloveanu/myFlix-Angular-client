@@ -80,25 +80,26 @@ export class UserProfileComponent implements OnInit {
   }
 
   deleteUser(): void {
-    let check = confirm(
-      'This will delete your account!'
-    );
-    if (check) {
-      this.fetchApiData.deleteUser().subscribe(() => {
+    this.fetchApiData.deleteUser().subscribe(
+      (resp: any) => {
+        this.snackBar.open(
+          'Your account has been deleted!',
+          'Ok',
+          { 
+            duration: 2000,
+          }
+        );
         localStorage.clear();
-        this.router.navigate(['welcome']);
-        this.snackBar.open('Account has been deleted', 'OK', {
+      },
+      (result) => {
+        this.snackBar.open(result, 'OK', {
           duration: 2000,
         });
-      });
-    } else {
-      window.location.reload();
-    }
-  }
-  profileUpdateDialog(): void {
-    this.dialog.open(UserProfileUpdateComponent, {
-      panelClass: 'update-dialog',
-    });
+        this.router.navigate(['/welcome']).then(() => {
+          window.location.reload();
+        });
+      }
+    );
   }
 
 }
