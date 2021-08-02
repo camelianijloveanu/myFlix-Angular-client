@@ -45,7 +45,6 @@ export class UserProfileUpdateComponent implements OnInit {
       (resp) => {
         this.dialogRef.close();
         localStorage.setItem('user', resp.Username);
-        localStorage.setItem('Username', resp.Username);
         localStorage.setItem('Password', resp.Password);
         localStorage.setItem('Email', resp.Email);
         localStorage.setItem('Birthday', resp.Birthday);
