@@ -17,6 +17,12 @@ import { identifierModuleUrl } from '@angular/compiler';
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  /**
+   * 
+   * @param fetchApiData fetch data from API.
+   * @param dialog dialog components with details.
+   * @param snackBar to display messages to user.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -26,7 +32,9 @@ export class MovieCardComponent {
   ngOnInit(): void {
     this.getMovies();
   }
-
+/**
+ * get all movies
+ */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -34,13 +42,24 @@ export class MovieCardComponent {
       return this.movies;
     });
   }
-
+/**
+ * opens dialog with genre's description
+ * @param name 
+ * @param description 
+ */
    showGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreDialogComponent, {
       data: { name, description },
     });
   }
 
+  /**
+   * opens dialog with info about director
+   * @param name 
+   * @param bio 
+   * @param birth 
+   * @param death 
+   */
   showDirectorDialog(
     name: string,
     bio: string,
@@ -51,7 +70,14 @@ export class MovieCardComponent {
       data: { name, bio, birth, death },
     });
   }
-
+/**
+ * opens dialog with info about the movie
+ * @param title 
+ * @param imagePath 
+ * @param description 
+ * @param director 
+ * @param genre 
+ */
    showDetailsDialog(
     title: string,
     imagePath: string,
@@ -63,7 +89,11 @@ export class MovieCardComponent {
       data: { title, imagePath, description, director, genre }
     });
   }
-
+/**
+ * adds movie to user's list of favorites
+ * @param id 
+ * @param title 
+ */
   addFavorite(id: string, title: string): void {
     this.fetchApiData.addToFav(id).subscribe((resp: any) => {
       console.log(resp);

@@ -18,6 +18,14 @@ export class UserProfileComponent implements OnInit {
   movies: any[] = [];
   favMovies: any = [];
 
+  /**
+   * 
+   * @param fetchApiData 
+   * @param router 
+   * @param snackBar 
+   * @param dialog 
+   */
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public router: Router,
@@ -29,6 +37,10 @@ export class UserProfileComponent implements OnInit {
     this.getUser();
    
   }
+
+  /**
+   * gets user's personal info and favorite movies
+   */
   getUser(): void {
     let FavoriteMovies = localStorage.getItem('FavoriteMovies');
     let Username = localStorage.getItem('user');
@@ -43,6 +55,9 @@ export class UserProfileComponent implements OnInit {
     this.getMovies();
   }
 
+  /**
+   * get all movies
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -50,7 +65,10 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-
+/**
+ * filters movies to see which ones are added to favorites and
+ * @returns only the ones the user chose as favorites
+ */
   filterFavorites(): void {
     this.movies.forEach((movie: any) => {
       if (this.user.FavoriteMovies.includes(movie._id)) {
@@ -59,6 +77,12 @@ export class UserProfileComponent implements OnInit {
     });
     return this.user.FavoriteMovies;
   }
+
+  /**
+   * removes movie from user's favorites list
+   * @param id 
+   * @param title 
+   */
 
   removeFavorites(id: string, title: string): void {
     this.fetchApiData.deleteFromFav(id).subscribe((resp: any) => {

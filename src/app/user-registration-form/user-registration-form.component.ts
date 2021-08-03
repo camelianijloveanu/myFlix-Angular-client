@@ -12,7 +12,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserRegistrationFormComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
-
+/**
+ * 
+ * @param fetchApiData 
+ * @param dialogRef 
+ * @param snackBar 
+ */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -20,7 +25,9 @@ export class UserRegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/**
+ * registers user with personal info
+ */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       this.dialogRef.close();

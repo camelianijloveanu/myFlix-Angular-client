@@ -11,6 +11,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserLoginFormComponent implements OnInit {
   isLoading = false;
   @Input() loginData ={ Username: '', Password: ''};
+  /**
+   * @param fetchApiData
+   * @param dialogRef
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -21,7 +27,9 @@ export class UserLoginFormComponent implements OnInit {
 
   }
   
-  
+  /**
+   * logs user in and stores profile data in local storage.
+   */
   loginUser(): void {
     this.isLoading = true;
 

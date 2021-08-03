@@ -9,14 +9,25 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
+  /**
+   * opens dialogs to register or log in
+   * @param dialog 
+   */
   constructor(public dialog: MatDialog) { }
   ngOnInit(): void {
   }
+
+  /**
+   * opens dialog to register as new user
+   */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       width: '280px'
     });
   }
+  /**
+   * opens dialog to log in as registered user
+   */
 openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '280px'

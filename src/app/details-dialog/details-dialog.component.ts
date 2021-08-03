@@ -10,6 +10,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 
 export class DetailsDialogComponent implements OnInit {
+/**
+ * data about movie from movie card component
+ * @param data 
+ */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {

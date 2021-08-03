@@ -11,12 +11,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 export class NavBarComponent implements OnInit {
+  /**
+   * display of messages and allows routing between components
+   * @param snackBar 
+   * @param router 
+   */
 
   constructor(public snackBar: MatSnackBar, public router: Router) { }
 
   ngOnInit(): void {
   }
-
+/**
+ * logs user out and returns to welcome page
+ */
   logOutUser(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);
