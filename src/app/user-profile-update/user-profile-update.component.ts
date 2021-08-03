@@ -16,6 +16,12 @@ export class UserProfileUpdateComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
   user: any = {};
 
+/**
+ * 
+ * @param fetchUserData 
+ * @param dialogRef 
+ * @param snackBar 
+ */
   constructor(
     public fetchUserData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserProfileUpdateComponent>,
@@ -24,8 +30,8 @@ export class UserProfileUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-   
   }
+  
   getUser(): void {
     let FavoriteMovies = localStorage.getItem('FavoriteMovies');
     let Username = localStorage.getItem('user');
@@ -40,6 +46,11 @@ export class UserProfileUpdateComponent implements OnInit {
   }
 
 
+
+  /**
+   * 
+   updates user personal info
+   */
   editUser(): void {
     this.fetchUserData.editUser(this.userData).subscribe(
       (resp) => {
